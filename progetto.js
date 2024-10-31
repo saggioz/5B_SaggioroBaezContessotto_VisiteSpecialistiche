@@ -11,9 +11,12 @@ const createTable = (parentElement, data) => {
             newrow=listadata
             console.log(newrow);
             let Row = "";
+            let col = "";
             newrow.forEach((dato) => {
                 let htmlRow = "<tr>" + dato.map(d => `<td>${d}</td>`).join('') + "</tr>" + "\n";
+                let htmlCol = "<th>" + dato.map(d => `<td>${d}</td>`).join('') + "</th>" + "\n";
                 Row += htmlRow;
+                col += htmlCol;
             }) 
             parentElement.innerHTML = header + Row + "</tbody></table>";
         }
@@ -21,4 +24,3 @@ const createTable = (parentElement, data) => {
 }
 
 let table = createTable(document.querySelector("#table"), [" ", "LUNEDÌ", "MARTEDÌ", "MERCOLEDÌ", "GIOVEDÌ", "VENERDÌ", "SABATO", "DOMENICA"]);
-table = createTable(document.querySelector("#table"), ["8", "9", "10", "11", "12"]);
