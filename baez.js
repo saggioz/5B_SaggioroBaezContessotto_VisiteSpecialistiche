@@ -2,6 +2,10 @@
 let config;
 let result_get=[];
 
+const GetData = () => {
+   fetch()
+}
+
 const SET = (chiave,value) => {
    console.log(value)
    return new Promise((resolve,reject)=>{
@@ -9,11 +13,11 @@ const SET = (chiave,value) => {
     fetch("https://ws.cipiaceinfo.it/cache/set", {
         headers: {
            'Content-Type': 'application/json',
-           'key': config.cacheToken
+           'key': chiave
         },
         method: "POST",
         body: JSON.stringify({
-           key: chiave,
+           key: "Hotel",
            value: value
         })
      }).then(r => r.json())
@@ -33,11 +37,11 @@ const GET = (chiave) => {
       fetch("https://ws.cipiaceinfo.it/cache/get", {
          headers: {
             'Content-Type': 'application/json',
-            'key': config.cacheToken
+            'key': chiave
          },
          method: "POST",
          body: JSON.stringify({
-            key: chiave
+            key: "Hotel"
          })
       }).then(r => r.json())
       .then(r => {

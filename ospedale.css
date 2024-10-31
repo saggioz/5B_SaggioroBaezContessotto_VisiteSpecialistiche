@@ -1,0 +1,52 @@
+.container{
+    display: none;
+    position: absolute;
+}
+
+.reparti-prenota{
+    display: flex;
+    justify-content: space-between;
+}
+
+.dprenota{
+    display: flex;
+}
+
+.prenota{
+    width: 130px;
+    height: 45px;
+    background-color: rgb(65, 115, 190);
+    border-radius: 130px;
+    color: white;
+}
+
+.prenota:hover{
+    background-color:  rgb(95, 132, 187);;
+}
+
+.reparti{
+    display: flex;
+}
+
+.reparto{
+    width: 100px;
+    height: 40px;
+    background-color: white;
+}
+
+.bottoni_set{
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.settimana{
+    width: 80px;
+    height: 30px;
+    border-radius: 130px;
+    background-color: white;
+}
+
+.settimana:hover{
+    background-color: lightgray;
+}
