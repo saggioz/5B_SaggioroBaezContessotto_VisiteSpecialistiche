@@ -4,39 +4,31 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
         <title>Hotel Miramare</title>
+        <link rel="stylesheet" href="ospedale.css">
         <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css" />
         <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-      </head>
-        <body>
-          <h1>Booking Hotel Miramare</h1>
-            <div id = "form" class="container">
-            </div>
-          <div>
-            <h1>Tabella disponibilità:</h1>
-            <div id="table"></div> 
-          </div>
-
-          <div class="modal" tabindex="-1">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title">Modal title</h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <p>Modal body text goes here.</p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <script src="baez.js"></script>
-          <script src="progetto.js"></script>      
-          <script src="visite.js"></script>
-        </body>
     </head>
+    <body>
+        <div id = "form" class="container">ciao</div>
+        <div class="reparti-prenota">
+            <div class="reparti">
+                <button class="reparto">Cardiologia</button>
+                <button class="reparto">Psicologia</button>
+                <button class="reparto">Oncologia</button>
+                <button class="reparto">Ortopedia</button>
+                <button class="reparto">Neurologia</button>
+            </div>
+            <div class="dprenota"><button class="prenota">PRENOTA <i class="fa-solid fa-arrow-right"></i></button></div>       
+        </div>
+        <div class="bottoni_set">
+            <button class="settimana">Precedente</button>
+            <button class="settimana">Succesiva</button>
+        </div>
+        <div id="table"></div> 
+        
+        <script src="baez.js"></script>
+        <script src="progetto.js"></script>      
+        <script src="visite.js"></script>
+        <script src="https://kit.fontawesome.com/85c43843e4.js" crossorigin="anonymous"></script>
+    </body>
 </html>
