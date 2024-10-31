@@ -12,15 +12,16 @@ const createTable = (parentElement, data) => {
             newrow = listadata;
             console.log(newrow);
             let Row = "";
-            newrow.forEach((index) => {
-                let htmlRow = "<tr><td>" + hours[index] + "</td>" + "<td></td>" + "<td></td>" + "<td></td>" + "<td></td>" + "<td></td>" + "</tr>" + "\n";
-                Row += htmlRow; 
-            }) 
+            for (let i=0;i<newrow;i++) {
+                let htmlRow = "<tr><td>" + hours[i] + "</td>" + "<td></td>" + "<td></td>" + "<td></td>" + "<td></td>" + "<td></td>" + "</tr>" + "\n";
+                Row += htmlRow;
+                console.log("ciao",Row) 
+            }
             parentElement.innerHTML = header + Row + "</tbody></table>";
         }
     }
 }
 
-let table = createTable(document.querySelector("#table"), [" ", "LUNEDÌ", "MARTEDÌ", "MERCOLEDÌ", "GIOVEDÌ", "VENERDÌ"]);
+let table = createTable(document.querySelector("#table"), ["LUNEDÌ", "MARTEDÌ", "MERCOLEDÌ", "GIOVEDÌ", "VENERDÌ"]);
 let hours = ["8", "9", "10", "11", "12"];
 table.crea(5, hours);
