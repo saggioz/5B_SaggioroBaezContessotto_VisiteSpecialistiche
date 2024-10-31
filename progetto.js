@@ -25,5 +25,4 @@ const headers = [" ", "LUNEDÌ", "MARTEDÌ", "MERCOLEDÌ", "GIOVEDÌ", "VENERDÌ
 const hours = ["8", "9", "10", "11", "12"];
 
 let tableContainer = document.querySelector("#table");
-let table = createTable(parentElement, data);
-table.crea(data, hours);
+let table = createTable(headers, hours);
