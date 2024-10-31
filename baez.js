@@ -3,7 +3,17 @@ let config;
 let result_get=[];
 
 const GetData = () => {
-   fetch()
+   return fetch('./config.json')
+   .then(response => {
+      return response.json();
+   })
+   .then(data => {
+      config = data;
+      console.log("Dati caricati", config);
+   })
+   .catch(error => {
+      console.error("Errore nel caricamento dei dati", error);
+   });
 }
 
 const SET = (chiave,value) => {
@@ -69,3 +79,7 @@ const Aggiorna =(nuova_riga)=>{
       })
    });
 }
+
+GetData().then(() => {
+   console.log(config.tipologie);
+})
