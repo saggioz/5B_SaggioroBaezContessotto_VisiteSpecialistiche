@@ -1,5 +1,5 @@
 
-const chiave = "3819207b-2545-44f5-9bce-560b484b2f0f";
+let config;
 let result_get=[];
 
 const SET = (chiave,value) => {
@@ -9,11 +9,11 @@ const SET = (chiave,value) => {
     fetch("https://ws.cipiaceinfo.it/cache/set", {
         headers: {
            'Content-Type': 'application/json',
-           'key': chiave
+           'key': config.cacheToken
         },
         method: "POST",
         body: JSON.stringify({
-           key: "Hotel",
+           key: chiave,
            value: value
         })
      }).then(r => r.json())
@@ -33,11 +33,11 @@ const GET = (chiave) => {
       fetch("https://ws.cipiaceinfo.it/cache/get", {
          headers: {
             'Content-Type': 'application/json',
-            'key': chiave
+            'key': config.cacheToken
          },
          method: "POST",
          body: JSON.stringify({
-            key: "Hotel"
+            key: chiave
          })
       }).then(r => r.json())
       .then(r => {
