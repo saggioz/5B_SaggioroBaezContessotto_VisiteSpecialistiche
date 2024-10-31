@@ -14,7 +14,7 @@ const createTable = (parentElement, data) => {
             let Row = "";
             newrow.forEach((index) => {
                 let htmlRow = "<tr><td>" + hours[index] + "</td>" + "<td></td>" + "<td></td>" + "<td></td>" + "<td></td>" + "<td></td>" + "</tr>" + "\n";
-                Row += htmlRow;
+                Row += htmlRow; 
             }) 
             parentElement.innerHTML = header + Row + "</tbody></table>";
         }

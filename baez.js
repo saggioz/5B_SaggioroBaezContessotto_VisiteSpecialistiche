@@ -1,6 +1,10 @@
 
-const chiave = "3819207b-2545-44f5-9bce-560b484b2f0f";
+let config;
 let result_get=[];
+
+const GetData = () => {
+   fetch()
+}
 
 const SET = (chiave,value) => {
    console.log(value)
