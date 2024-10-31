@@ -71,4 +71,5 @@ GET(chiave).then((result_get) => {
     table.crea(giorno);
 })
 console.log(lista_dizionario_giorni)
-const table = createTable(document.querySelector("#table"), ["DATA", "SINGOLA", "DOPPIA","TRIPLA", "SUITE"]);
+let table = createTable(document.querySelector("#table"), ["DATA", "SINGOLA", "DOPPIA","TRIPLA", "SUITE"]);
+table = createTable(document.querySelector("#table"), ["A", "B", "C","D", "E"]);
