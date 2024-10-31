@@ -2,25 +2,28 @@
 const createTable = (parentElement, data) => {
     console.log(data);
     let header = "<table class='table' border='1'><thead>";
+    header += "<th>Ore</th>";
     header += data.map(t => `<th>${t}</th>`).join("");
     header += "</thead><tbody>";
     parentElement.innerHTML = header;
     let newrow = [];
     return {
-        crea: (listadata) => {
+        crea: (listadata, hours) => {
             newrow=listadata
             console.log(newrow);
             let Row = "";
-            let col = "";
-            newrow.forEach((dato) => {
-                let htmlRow = "<tr>" + dato.map(d => `<td>${d}</td>`).join('') + "</tr>" + "\n";
-                let htmlCol = "<th>" + dato.map(d => `<td>${d}</td>`).join('') + "</th>" + "\n";
+            newrow.forEach((dato, index) => {
+                let htmlRow = "<tr><td>" + hours[index] + "</td>" + dato.map(d => `<td>${d}</td>`).join('') + "</tr>" + "\n";
                 Row += htmlRow;
-                col += htmlCol;
             }) 
             parentElement.innerHTML = header + Row + "</tbody></table>";
         }
     }
 }
 
-let table = createTable(document.querySelector("#table"), [" ", "LUNEDÌ", "MARTEDÌ", "MERCOLEDÌ", "GIOVEDÌ", "VENERDÌ", "SABATO", "DOMENICA"]);
+const headers = [" ", "LUNEDÌ", "MARTEDÌ", "MERCOLEDÌ", "GIOVEDÌ", "VENERDÌ", "SABATO", "DOMENICA"];
+const hours = ["8", "9", "10", "11", "12"];
+
+let tableContainer = document.querySelector("#table");
+let table = createTable(parentElement, data);
+table.crea(data, hours);
