@@ -1,13 +1,20 @@
 
-const createTable = (parentElement, data) => {
-    console.log(data);
-    let header = "<table class='table' border='1'><thead>";
-    header += "<th>ORE</th>";
-    header += data.map(t => `<th>${t}</th>`).join("");
-    header += "</thead><tbody>";
-    parentElement.innerHTML = header;
+const createTable = (parentElement) => {
+    let data=null;
+    let header;
     let newrow = [];
     return {
+        build:(dati)=>{
+            data=dati;
+        },
+        creaheader:()=>{
+            header = "<table class='table' border='1'><thead>";
+            header += "<th>ORE</th>";
+            header += data.map(t => `<th>${t}</th>`).join("");
+            header += "</thead><tbody>";
+            console.log(parentElement)
+            parentElement.innerHTML = header;
+        },
         crea: (listadata, hours) => {
             newrow = listadata;
             console.log(newrow);
@@ -21,7 +28,8 @@ const createTable = (parentElement, data) => {
         }
     }
 }
-
-let table = createTable(document.querySelector("#table"), ["LUNEDÌ", "MARTEDÌ", "MERCOLEDÌ", "GIOVEDÌ", "VENERDÌ"]);
+let table = createTable(document.querySelector("#table"));
+table.build( ["LUNEDÌ", "MARTEDÌ", "MERCOLEDÌ", "GIOVEDÌ", "VENERDÌ"]);
+table.creaheader();
 let hours = ["8", "9", "10", "11", "12"];
 table.crea(5, hours);
