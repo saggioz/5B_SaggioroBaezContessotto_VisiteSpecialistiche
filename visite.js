@@ -13,22 +13,43 @@ const createForm = (parentElement) => {
         </div>
     `;
 
+    const closeModal = () => {
+        document.getElementById("form").style.display = "none";
+    };
+
     return {
         setlabels: (labels) => {data = labels},
         submit: (callbackinput) => {callback = callbackinput},
         render: () => {
             parentElement.innerHTML = data.map((index) => {
-                return `<div class="form-group">
-                        ${index[0]}\n <input type="${index[1]}" id="${index[0]}" class="form-control"/>
+                if (index[1] === "dropdown") {
+                    return `
+                    <div class="form-group">
+                            ${field[0]}
+                            <select id="${field[0]}" class="form-control">
+                                ${field[2].map(option => `<option value="${option}">${option}</option>`).join('')}
+                            </select>
                         </div>`;
-            }).join("\n") + `<button type="button" class="btn btn-primary" id="submit">SUBMIT</button>`;
+                }
+                return `
+                    <div class="form-group">
+                        ${field[0]}
+                        <input type="${field[1]}" id="${field[0]}" class="form-control"/>
+                    </div>`;
+                
+            }).join("\n");
+
+            document.getElementById("form").style.display = "block";
+
             document.getElementById("submit").onclick = () => {
                 const result = {};
                 console.log(data)
                 data.forEach((index) => {
-                    const campo = index[0];  
-                    result[campo] = document.getElementById(campo).value;
+                    result[index[0]] = document.getElementById(index[0]).value;
                 });
+                if (callback) {
+                    closeModal();
+                };
                 Booking(result);        
             }
             },
