@@ -2,6 +2,17 @@ const createForm = (parentElement) => {
     let data;
     callback = null;
 
+    parentElement.innerHTML = `
+    <div class="modal" id="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close-button" id="closeButton">&times;</span>
+                <div id="formContent"></div>
+                <button type="button" class="btn btn-primary" id="submit">SUBMIT</button>
+                <button type="button" class="btn btn-secondary" id="cancel">CANCEL</button>
+            </div>
+        </div>
+    `;
+
     return {
         setlabels: (labels) => {data = labels},
         submit: (callbackinput) => {callback = callbackinput},
