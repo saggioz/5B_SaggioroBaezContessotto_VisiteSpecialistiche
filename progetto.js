@@ -7,7 +7,7 @@ const createTable = (parentElement) => {
     let newrow = [];
 
     const settimane = (spostamento) => {
-        const inzio = new Date();
+        const inizio = new Date();
         inizio.setDate(inizio.getDate() + (spostamento * 7) - inizio.getDay() + 1);
         return giorni.map((giorno, i) => {
             const date = new Date(inizio);
@@ -19,7 +19,7 @@ const createTable = (parentElement) => {
     const tableheader = () => {
         const week = getWeekDates(settimana);
         header = "<table class='table' border='1'><thead><tr><th>ORE</th>";
-        header += weekDates.map(date => `<th>${date}</th>`).join("");
+        header += week.map(date => `<th>${date}</th>`).join("");
         header += "</tr></thead><tbody>";
         parentElement.innerHTML = header;
     };
@@ -34,18 +34,18 @@ const createTable = (parentElement) => {
 
     return {
         init: () => {
-            buildTableHeader();
-            buildTableRows();
+            tableheader();
+            tablerow();
         },
         nextWeek: () => {
-            currentWeek++;
-            buildTableHeader();
-            buildTableRows();
+            settimana++;
+            tableheader();
+            tablerow();
         },
         previousWeek: () => {
-            currentWeek--;
-            buildTableHeader();
-            buildTableRows();
+            settimana--;
+            tableheader();
+            tablerow();
         }
     };
 };
