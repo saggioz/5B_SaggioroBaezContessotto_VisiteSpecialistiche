@@ -2,7 +2,9 @@ const createForm = (parentElement) => {
     let data;
     callback = null;
 
-    parentElement.innerHTML += `
+    const modal = document.getElementById("modal");
+    
+    modal.innerHTML += `
     <div class="modal" id="modal" style="display: none;">
             <div class="modal-content">
                 <span class="close-button" id="closeButton">;</span>
