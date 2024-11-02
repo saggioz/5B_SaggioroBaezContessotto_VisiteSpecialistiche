@@ -1,4 +1,3 @@
-
 const createTable = (parentElement) => {
     let data=null;
     let header;
@@ -17,12 +16,10 @@ const createTable = (parentElement) => {
         },
         crea: (listadata, hours) => {
             newrow = listadata;
-            console.log(newrow);
             let Row = "";
             for (let i=0;i<newrow;i++) {
                 let htmlRow = "<tr><td>" + hours[i] + "</td>" + "<td></td>" + "<td></td>" + "<td></td>" + "<td></td>" + "<td></td>" + "</tr>" + "\n";
                 Row += htmlRow;
-                console.log("ciao",Row) 
             }
             parentElement.innerHTML = header + Row + "</tbody></table>";
         }

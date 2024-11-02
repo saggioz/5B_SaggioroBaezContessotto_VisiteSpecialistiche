@@ -51,33 +51,26 @@
     background-color: lightgray;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-  }
   
-  .header {
+.header {
     display: flex;
     margin-bottom: 10px;
-  }
+}
   
-  .specialty-tab {
+.specialty-tab {
     padding: 10px 20px;
     margin-right: 5px;
     background-color: #f0f0f0;
     border: none;
     cursor: pointer;
-  }
+}
   
-  .specialty-tab.active {
+.specialty-tab.active {
     background-color: black;
     color: white;
-  }
+}
 
-  .book-button {
+.book-button {
     padding: 10px 20px;
     background-color: #ff5722;
     color: #fff;

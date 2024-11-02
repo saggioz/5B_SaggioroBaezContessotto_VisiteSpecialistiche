@@ -3,18 +3,21 @@ let config;
 let result_get=[];
 
 const GetData = () => {
-   return fetch('./config.json')
-   .then(response => {
-      return response.json();
-   })
-   .then(data => {
-      config = data;
-      console.log("Dati caricati", config);
-   })
-   .catch(error => {
-      console.error("Errore nel caricamento dei dati", error);
-   });
-}
+   return fetch('./conf.json')
+      .then(response => {
+         if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+         }
+         return response.json();
+      })
+      .then(data => {
+         config = data;
+         console.log("Dati caricati", config.tipologie);
+      })
+      .catch(error => {
+         console.error("Errore nel caricamento dei dati", error);
+      });
+};
 
 const SET = (chiave,value) => {
    console.log(value)
@@ -79,7 +82,3 @@ const Aggiorna =(nuova_riga)=>{
       })
    });
 }
-
-GetData().then(() => {
-   console.log(config.tipologie);
-})
