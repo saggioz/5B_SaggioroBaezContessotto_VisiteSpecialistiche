@@ -3,18 +3,19 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
-        <title>Hotel Miramare</title>
+        <title>Visite specialistiche</title>
         <link rel="stylesheet" href="ospedale.css">
     </head>
     <body>
+        <h1>Centro specialistico per visite mediche</h1>
         <div id="form" class="container"></div>
 
     <div class="departments">
-        <button onclick = "selectDepartment('Cardiologia')">Cardiologia</button>
-        <button onclick = "selectDepartment('Psicologia')">Psicologia</button>
-        <button onclick = "selectDepartment('Oncologia')">Oncologia</button>
-        <button onclick = "selectDepartment('Ortopedia')">Ortopedia</button>
-        <button onclick = "selectDepartment('Neurologia')">Neurologia</button>
+        <button onclick = "('Cardiologia')" id = "cardiologia">Cardiologia</button>
+        <button onclick = "('Psicologia')" id = "psicologia">Psicologia</button>
+        <button onclick = "('Oncologia')" id = "oncologia">Oncologia</button>
+        <button onclick = "('Ortopedia')" id = "ortopedia">Ortopedia</button>
+        <button onclick = "('Neurologia')" id = "neurologia">Neurologia</button>
     </div>
 
     <div class="modal" id="modal">
@@ -25,11 +26,13 @@
             <div id="controls"></div>     
         </div>
         <div class="bottoni_set">
-            <button class="settimana">Precedente</button>
-            <button class="settimana">Succesiva</button>
+            <button class="precedente">Precedente</button>
+            <button class="successiva">Succesiva</button>
         </div>
-        <button id="openModalButton" class="btn btn-primary">PRENOTA</button>
         <div id="table"></div> 
+
+        <button id="openModalButton" class="btn btn-primary">PRENOTA</button>
+        
         <script src="baez.js"></script>
         <script src="nav.js"></script>
         <script src="progetto.js"></script>      
