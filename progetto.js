@@ -1,32 +1,58 @@
 const createTable = (parentElement) => {
-    let data=null;
+    let data = null;
     let header;
+    let settimana = 0;
+    const giorni = ["LUNEDÌ", "MARTEDÌ", "MERCOLEDÌ", "GIOVEDÌ", "VENERDÌ"]
+    let hours = ["8", "9", "10", "11", "12"];
     let newrow = [];
-    return {
-        build:(dati)=>{
-            data=dati;
-        },
-        creaheader:()=>{
-            header = "<table class='table' border='1'><thead>";
-            header += "<th>ORE</th>";
-            header += data.map(t => `<th>${t}</th>`).join("");
-            header += "</thead><tbody>";
-            console.log(parentElement)
-            parentElement.innerHTML = header;
-        },
-        crea: (listadata, hours) => {
-            newrow = listadata;
-            let Row = "";
-            for (let i=0;i<newrow;i++) {
-                let htmlRow = "<tr><td>" + hours[i] + "</td>" + "<td></td>" + "<td></td>" + "<td></td>" + "<td></td>" + "<td></td>" + "</tr>" + "\n";
-                Row += htmlRow;
-            }
-            parentElement.innerHTML = header + Row + "</tbody></table>";
+
+    const settimane = (spostamento) => {
+        const inzio = new Date();
+        inizio.setDate(inizio.getDate() + (spostamento * 7) - inizio.getDay() + 1);
+        return giorni.map((giorno, i) => {
+            const date = new Date(inizio);
+            date.setDate(inizio.getDate() + 1);
+            return `${day} ${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+        });
+    };
+
+    const tableheader = () => {
+        const week = getWeekDates(settimana);
+        header = "<table class='table' border='1'><thead><tr><th>ORE</th>";
+        header += weekDates.map(date => `<th>${date}</th>`).join("");
+        header += "</tr></thead><tbody>";
+        parentElement.innerHTML = header;
+    };
+
+    const tablerow = () => {
+        let rows = "";
+        for (let hour of hours) {
+            rows += `<tr><td>${hour}</td><td></td><td></td><td></td><td></td><td></td></tr>`;
         }
-    }
-}
-let table = createTable(document.querySelector("#table"));
-table.build( ["LUNEDÌ", "MARTEDÌ", "MERCOLEDÌ", "GIOVEDÌ", "VENERDÌ"]);
-table.creaheader();
-let hours = ["8", "9", "10", "11", "12"];
-table.crea(5, hours);
+        parentElement.innerHTML = header + rows + "</tbody></table>";
+    };
+
+    return {
+        init: () => {
+            buildTableHeader();
+            buildTableRows();
+        },
+        nextWeek: () => {
+            currentWeek++;
+            buildTableHeader();
+            buildTableRows();
+        },
+        previousWeek: () => {
+            currentWeek--;
+            buildTableHeader();
+            buildTableRows();
+        }
+    };
+};
+
+let tablec = createTable(document.querySelector("#table"));
+const table = createTable(tablec);
+table.init();
+
+document.querySelector(".successiva").addEventListener("click", () => table.nextWeek());
+document.querySelector(".precedente").addEventListener("click", () => table.previousWeek());
