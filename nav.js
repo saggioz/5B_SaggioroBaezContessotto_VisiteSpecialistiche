@@ -1,6 +1,6 @@
 let specialtyTabs;
 const createSpecialtyTabs = (parentElement,reparti) => {
-  let activeIndex = 2; 
+  let activeIndex = 0; 
   console.log(parentElement)
   console.log(reparti)
   return {
@@ -19,8 +19,8 @@ const createSpecialtyTabs = (parentElement,reparti) => {
       parentElement.innerHTML = this.build();
       Array.from(parentElement.querySelectorAll("button")).forEach(button => {
         button.addEventListener("click", () => {
-          const index = parseInt(button.getAttribute("data-index")); // Ottieni l'indice dal pulsante
-          this.setActive(index); // Chiama setActive con l'indice corretto
+          const index = parseInt(button.getAttribute("data-index")); 
+          this.setActive(index); 
         });
       });
     },
@@ -35,8 +35,11 @@ const createBookButton = (parentElement) => {
   return {
     render: () => {
       parentElement.innerHTML = `
-        <button class="book-button">Prenota<i class="fa-solid fa-arrow-right"></i></button>
+        <button class="book-button" id="openModalButton">Prenota<i class="fa-solid fa-arrow-right"></i></button>
       `;
+      document.getElementById("openModalButton").onclick = () => {
+        form.render();
+      };
     }
   };
 };
@@ -46,7 +49,6 @@ GetData().then(()=>{
   const bookButton = createBookButton(document.getElementById("controls"));
   specialtyTabs.render();
   bookButton.render();
-  specialtyTabs.setActive(4)
   }
 )
 

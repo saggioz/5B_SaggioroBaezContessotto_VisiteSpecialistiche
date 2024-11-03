@@ -32,8 +32,12 @@ const createForm = () => {
             data.forEach((index) => {
                 result[index[0]] = document.getElementById(index[0]).value;
             });
-            closeModal();
+            let nom_rep = document.querySelector(".active").textContent.trim()
+            console.log(nom_rep)
+            result["Reparto"] = nom_rep
+            console.log(result )
             if (callback) {
+                console.log(result)
                 callback(result);
             }
         };
@@ -67,41 +71,39 @@ const createForm = () => {
     };
 };
 
-    const Booking = (result) => {
-        let available=[...lista_dizionario_giorni]
-        console.log(available)
-        let controllo = false
-        available.forEach((giorno)=>{
-            if(giorno["Data"]==result.Data){
-                for(chiave_dizionario in result){
-                    if (chiave_dizionario!="Data"){
-                        if((giorno[chiave_dizionario]-result[chiave_dizionario])<0){
-                            controllo=true
-                        }
+const Booking = (result) => {
+    let available=[...lista_dizionario_giorni]
+    console.log(available)
+    let controllo = false
+    available.forEach((giorno)=>{
+        if(giorno["Data"]==result.Data){
+            for(chiave_dizionario in result){
+                if (chiave_dizionario!="Data"){
+                    if((giorno[chiave_dizionario]-result[chiave_dizionario])<0){
+                        controllo=true
                     }
-                } 
-            }
-        })
-        if(controllo){
-            alert("Non ci sono abbastanza stanze disponibili per la sua prenotazione")
+                }
+            } 
         }
-        else{
-            console.log("stai aggiornando")
-            Aggiorna(result)
-        }
-        
-    };
-    
-
-    const form = createForm(document.getElementById("form"));
-    form.setlabels([["Data", "date"],
-        ["Orario Prenotazione", "dropdown", ["08:00", "09:00", "10:00", "11:00", "12:00"]],
-        ["Nominativo", "text"],
-    ]);
-    form.submit = ((formData) => {
-        console.log("Dati inviati:", formData);
-        Booking(formData);
     })
-    document.getElementById("openModalButton").onclick = () => {
-        form.render();
-    };
+    if(controllo){
+        alert("Non ci sono abbastanza stanze disponibili per la sua prenotazione")
+    }
+    else{
+        console.log("stai aggiornando")
+        Aggiorna(result)
+    }
+    
+};
+
+
+const form = createForm(document.getElementById("form"));
+form.setlabels([["Data", "date"],
+    ["Orario Prenotazione", "dropdown", ["08:00", "09:00", "10:00", "11:00", "12:00"]],
+    ["Nominativo", "text"],
+]);
+form.submit = ((formData) => {
+    console.log("Dati inviati:", formData);
+    Booking(formData);
+})
+console.log(document.querySelectorAll("#openModalButton"))
