@@ -30,7 +30,7 @@ const SET = (chiave,value) => {
         },
         method: "POST",
         body: JSON.stringify({
-           key: "Hotel",
+           key: "Ospedale",
            value: value
         })
      }).then(r => r.json())
@@ -54,7 +54,7 @@ const GET = (chiave) => {
          },
          method: "POST",
          body: JSON.stringify({
-            key: "Hotel"
+            key: "Ospedale"
          })
       }).then(r => r.json())
       .then(r => {
@@ -66,17 +66,15 @@ const GET = (chiave) => {
    })   
 }
 
-const Aggiorna =(nuova_riga)=>{
+const Aggiorna =(chiave_d,paziente)=>{
    GET(chiave).then(result_get => {
       console.log(result_get);
-      result_get.push(nuova_riga)
+      result_get[chiave_d]=paziente
       SET(chiave,result_get).then(r=>{
          console.log(r)
          if (r==="Ok"){
             GET(chiave).then((result_get) => {
                console.log("genera")
-               let giorno = generaData(30,result_get)
-               table.crea(giorno);
            })
          }
       })

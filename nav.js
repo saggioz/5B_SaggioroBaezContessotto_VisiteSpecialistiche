@@ -1,4 +1,5 @@
 let specialtyTabs;
+let chiave;
 const createSpecialtyTabs = (parentElement,reparti) => {
   let activeIndex = 0; 
   console.log(parentElement)
@@ -46,9 +47,9 @@ const createBookButton = (parentElement) => {
 
 GetData().then(()=>{
   let specialtyTabs = createSpecialtyTabs(document.getElementById("specialty-tabs"),config.tipologie);
+  chiave = config.cacheToken
   const bookButton = createBookButton(document.getElementById("controls"));
   specialtyTabs.render();
   bookButton.render();
   }
 )
-

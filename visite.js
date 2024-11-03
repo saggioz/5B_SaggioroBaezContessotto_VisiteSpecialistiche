@@ -18,8 +18,8 @@ const createForm = () => {
             <div class="modal-content">
                 <span class="close-button" id="closeButton"></span>
                 <div id="formContent"></div>
+                <div id ="Message"></div>
                 <button type="button" class="btn btn-primary" id="submit">PRENOTA</button>
-                <div id ="Message">Prenotazione eseguita con successo</div>
                 <button type="button" class="btn btn-secondary" id="cancel">ANNULLA</button>
             </div>
         `;
@@ -37,7 +37,10 @@ const createForm = () => {
             let nom_rep = document.querySelector(".active").textContent.trim()
             console.log(nom_rep)
             result["Reparto"] = nom_rep
-            console.log(result )
+            console.log(result)
+            let chiave_d = `${result["Reparto"]}-${result["Data"]}-${result["Orario Prenotazione"]}`
+            Aggiorna(chiave_d,result["Nominativo"])
+            document.getElementById("Message").innerText="Prenotazione eseguita con successo"
             if (callback) {
                 console.log(result)
                 callback(result);
