@@ -16,13 +16,15 @@ const createForm = () => {
     const renderModalContent = () => {
         modal.innerHTML = `
             <div class="modal-content">
-                <span class="close-button" id="closeButton">&times;</span>
+                <span class="close-button" id="closeButton"></span>
                 <div id="formContent"></div>
                 <button type="button" class="btn btn-primary" id="submit">PRENOTA</button>
+                <div id ="Message">Prenotazione eseguita con successo</div>
                 <button type="button" class="btn btn-secondary" id="cancel">ANNULLA</button>
             </div>
         `;
 
+        document.getElementById("Message").onclick = closeModal;
         document.getElementById("closeButton").onclick = closeModal;
         document.getElementById("cancel").onclick = closeModal;
 
@@ -87,7 +89,7 @@ const Booking = (result) => {
         }
     })
     if(controllo){
-        alert("Non ci sono abbastanza stanze disponibili per la sua prenotazione")
+        alert("Errore")
     }
     else{
         console.log("stai aggiornando")
@@ -103,6 +105,7 @@ form.setlabels([["Data", "date"],
     ["Nominativo", "text"],
 ]);
 form.submit = ((formData) => {
+    document.getElementById("Message").onclick = openModal();
     console.log("Dati inviati:", formData);
     Booking(formData);
 })
