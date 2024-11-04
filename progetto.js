@@ -42,7 +42,7 @@ const createTable = (parentElement) => {
         },
         
         creaheader:(lunedi) => {
-            header = "<table class='table' border='1'><thead>";
+            header = "<table class='table table-bordered' border='1'><thead>";
             header += "<th>ORE</th>";
 
             header += data.map(day => {
