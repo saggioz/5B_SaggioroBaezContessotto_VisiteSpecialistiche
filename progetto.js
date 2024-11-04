@@ -2,15 +2,19 @@ const precedente = document.querySelector(".precedente");
 const successivo = document.querySelector(".successiva")
 
 precedente.onclick=()=>{
-    let giorno = giorno_iniziale()
+    console.log(giorno)
     giorno.setDate(giorno.getDate() - 7);
+    console.log(giorno)
     table.creaheader(giorno)
+    table.crea(5, hours);
+    giorno.setDate(giorno.getDate() - 5);
 }
 
 successivo.onclick=()=>{
-    let giorno = giorno_iniziale()
     giorno.setDate(giorno.getDate() + 7);
     table.creaheader(giorno)
+    table.crea(5, hours);
+    giorno.setDate(giorno.getDate() - 5);
 }
 
 
@@ -23,6 +27,7 @@ const giorno_iniziale = () => {
     } else if (giorno_settimanale === 0){
         oggi.setDate(oggi.getDate() + 1);
     }
+    console.log(oggi)
     return oggi;
 };
 
@@ -36,13 +41,13 @@ const createTable = (parentElement) => {
             data = dati;
         },
         
-        creaheader:(giorno) => {
+        creaheader:(lunedi) => {
             header = "<table class='table' border='1'><thead>";
             header += "<th>ORE</th>";
 
             header += data.map(day => {
-                const formato = day + " " + giorno.toLocaleDateString("it-IT");
-                giorno.setDate(giorno.getDate() + 1);
+                const formato = day + " " + lunedi.toLocaleDateString("it-IT");
+                lunedi.setDate(lunedi.getDate() + 1);
                 return `<th>${formato}</th>`;
             }).join("");
             header += "</thead><tbody>";
@@ -52,12 +57,10 @@ const createTable = (parentElement) => {
 
         crea: (listadata, hours) => {
             newrow = listadata;
-            console.log(newrow);
             let Row = "";
             for (let i=0;i<newrow;i++) {
                 let htmlRow = "<tr><td>" + hours[i] + "</td>" + "<td></td>" + "<td></td>" + "<td></td>" + "<td></td>" + "<td></td>" + "</tr>" + "\n";
                 Row += htmlRow;
-                console.log("ciao",Row) 
             }
             parentElement.innerHTML = header + Row + "</tbody></table>";
         }
@@ -66,7 +69,8 @@ const createTable = (parentElement) => {
 
 let table = createTable(document.querySelector("#table"));
 table.build( ["LUNEDÌ", "MARTEDÌ", "MERCOLEDÌ", "GIOVEDÌ", "VENERDÌ"]);
+let lunedi = giorno_iniziale()
 let giorno = giorno_iniziale()
-table.creaheader(giorno);
+table.creaheader(lunedi);
 let hours = ["8", "9", "10", "11", "12"];
 table.crea(5, hours);
