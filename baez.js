@@ -45,6 +45,7 @@ const SET = (chiave,value) => {
 }
 
 const GET = (chiave) => {
+   console.log(chiave)
    return new Promise((resolve,reject)=>{
       try{
       fetch("https://ws.cipiaceinfo.it/cache/get", {
