@@ -1,6 +1,8 @@
+//bottoni per le settimane precedenti e successive
 const precedente = document.querySelector(".precedente");
 const successivo = document.querySelector(".successiva")
 
+//funzione per aggiornare la tabella con i giorni della settimana precedente
 precedente.onclick=()=>{
     console.log(giorno)
     giorno.setDate(giorno.getDate() - 7);
@@ -8,13 +10,14 @@ precedente.onclick=()=>{
     table.crea(lista_diz, hours,giorno);
 }
 
+//funzione per aggiornare la tabella con i giorni della settimana successiva
 successivo.onclick=()=>{
     giorno.setDate(giorno.getDate() + 7);
     table.creaheader(giorno)
     table.crea(lista_diz, hours,giorno);
 }
 
-
+//funzione per il calcolo del giorno di partenza, ossia lunedì e toglie sabati e domeniche
 const giorno_iniziale = () => {
     let oggi = new Date();
     let giorno_settimanale = oggi.getDay();
@@ -28,6 +31,7 @@ const giorno_iniziale = () => {
     return oggi;
 };
 
+//creazione del componente tabella
 const createTable = (parentElement) => {
     let data = null;
     let header;
@@ -74,6 +78,7 @@ const createTable = (parentElement) => {
                 currentWeek.forEach(day => {
                     let paziente = ""
                     const dayString = day.toISOString().split("T")[0];
+                    //controllo dati e prenotazioni
                     listadata.forEach((prenotazione)=>{
                         if (nom_rep===prenotazione[0] && prenotazione[1]===dayString && prenotazione[2]===hour){
                             console.log("giorno e ora uguale")
@@ -81,6 +86,7 @@ const createTable = (parentElement) => {
                         }
                     })
                     console.log(paziente)
+                    //se ha trovato il paziente o inserisce altrimenti la casella rimane vuota
                     if (paziente!=""){
                         Row += `<td>${paziente}</td>`;
                     }
@@ -99,6 +105,8 @@ const createTable = (parentElement) => {
 let table = createTable(document.querySelector("#table"));
 let giorno = giorno_iniziale()
 let hours = ["08:00", "09:00", "10:00", "11:00", "12:00"];
+
+//fetch del json, fetch dei data per aggiornare la tabella con la render
 GetData().then(()=>{
     chiave = config.cacheToken
     GET(chiave).then((result_get)=>{
@@ -112,6 +120,7 @@ GetData().then(()=>{
     }
   )
 
+//set Interval per aggiornare i dati ogni 3 minuti
 setInterval(()=>{
     GetData().then(()=>{
         chiave = config.cacheToken
