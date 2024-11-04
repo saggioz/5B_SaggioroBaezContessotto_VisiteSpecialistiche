@@ -1,5 +1,17 @@
 let lista_diz = [];
 
+const crea_lista_diz = (result) =>{
+    let lista_diz = []
+    const chiaviPrenotazioni = Object.keys(result);
+    chiaviPrenotazioni.forEach((chiave_diz) => {
+        let lista_prenotazione = chiave_diz.split("/");
+        lista_prenotazione.push(result[chiave_diz]);
+        lista_diz.push(lista_prenotazione);
+    });
+    console.log(lista_diz)
+    return lista_diz
+}
+
 const createForm = () => {
     let data;
     callback = null;
@@ -39,20 +51,9 @@ const createForm = () => {
             let nom_rep = document.querySelector(".active").textContent.trim()
             console.log(nom_rep)
             result["Reparto"] = nom_rep
-            console.log(result)
-            console.log(result_get)
             let chiave_d = `${result["Reparto"]}/${result["Data"]}/${result["Orario Prenotazione"]}`
             Aggiorna(chiave_d,result["Nominativo"])
-            document.getElementById("Message").innerText="Prenotazione eseguita con successo"
-            const chiaviPrenotazioni = Object.keys(result);
-            chiaviPrenotazioni.forEach((chiave_diz) => {
-                let lista_prenotazione = chiave_diz.split("/");
-                lista_prenotazione.push(result[chiave_diz]);
-                lista_diz.push(lista_prenotazione);
-            });
-            console.log(lista_diz);
-            
-            
+            document.getElementById("Message").innerText="Prenotazione eseguita con successo"        
             if (callback) {
                 console.log(result)
                 callback(result);
@@ -124,4 +125,3 @@ form.submit = ((formData) => {
     console.log("Dati inviati:", formData);
     Booking(formData);
 })
-console.log(document.querySelectorAll("#openModalButton"))

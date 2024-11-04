@@ -1,6 +1,6 @@
 
 let config;
-let result_get=[];
+let result_Get;
 
 const GetData = () => {
    return fetch('./conf.json')
@@ -69,13 +69,16 @@ const GET = (chiave) => {
 
 const Aggiorna =(chiave_d,paziente)=>{
    GET(chiave).then(result_get => {
-      console.log(result_get);
       result_get[chiave_d]=paziente
       SET(chiave,result_get).then(r=>{
          console.log(r)
          if (r==="Ok"){
             GET(chiave).then((result_get) => {
                console.log("genera")
+               console.log(result_get)
+               lista_diz=crea_lista_diz(result_get)
+               table.creaheader(giorno)
+               table.crea(lista_diz, hours,giorno);
            })
          }
       })

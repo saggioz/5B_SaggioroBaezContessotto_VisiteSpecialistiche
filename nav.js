@@ -22,6 +22,8 @@ const createSpecialtyTabs = (parentElement,reparti) => {
         button.addEventListener("click", () => {
           const index = parseInt(button.getAttribute("data-index")); 
           this.setActive(index); 
+          table.creaheader(giorno)
+          table.crea(lista_diz, hours,giorno);
         });
       });
     },
@@ -53,5 +55,8 @@ GetData().then(()=>{
   const bookButton = createBookButton(document.getElementById("controls"));
   specialtyTabs.render();
   bookButton.render();
+  GET(chiave).then((result_get)=>{
+    lista_diz=crea_lista_diz(result_get)
+  })
   }
 )
