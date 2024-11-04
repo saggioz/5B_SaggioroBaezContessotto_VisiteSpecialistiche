@@ -45,6 +45,8 @@ const createBookButton = (parentElement) => {
   };
 };
 
+
+
 GetData().then(()=>{
   let specialtyTabs = createSpecialtyTabs(document.getElementById("specialty-tabs"),config.tipologie);
   chiave = config.cacheToken
