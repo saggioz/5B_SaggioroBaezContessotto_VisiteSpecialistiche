@@ -1,4 +1,4 @@
-let lista = [];
+let lista_diz = [];
 
 const createForm = () => {
     let data;
@@ -47,9 +47,9 @@ const createForm = () => {
             chiaviPrenotazioni.forEach((chiave_diz) => {
                 let lista_prenotazione = chiave_diz.split("/");
                 lista_prenotazione.push(result[chiave_diz]);
-                lista.push(lista_prenotazione);
+                lista_diz.push(lista_prenotazione);
             });
-            console.log(lista);
+            console.log(lista_diz);
             
             
             if (callback) {
