@@ -1,7 +1,7 @@
 
 let config;
 let result_Get;
-
+//fa la fetch al json
 const GetData = () => {
    return fetch('./conf.json')
       .then(response => {
@@ -67,6 +67,8 @@ const GET = (chiave) => {
    })   
 }
 
+
+//fa sia la get che set per poi aggiornare la tabella
 const Aggiorna =(chiave_d,paziente)=>{
    GET(chiave).then(result_get => {
       result_get[chiave_d]=paziente

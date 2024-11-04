@@ -5,6 +5,7 @@ const createSpecialtyTabs = (parentElement,reparti) => {
   console.log(parentElement)
   console.log(reparti)
   return {
+    //funzione che crea i bottoni
     build: () => {
       return reparti.map((item,index) => {
         let buttonClass = 'specialty-tab';
@@ -18,6 +19,7 @@ const createSpecialtyTabs = (parentElement,reparti) => {
     },
     render: function() {
       parentElement.innerHTML = this.build();
+      //per ogni bottone creo un funzione che se il bottone viene schiacciato gli da la classe active e aggiorna la tabella
       Array.from(parentElement.querySelectorAll("button")).forEach(button => {
         button.addEventListener("click", () => {
           const index = parseInt(button.getAttribute("data-index")); 
@@ -33,7 +35,7 @@ const createSpecialtyTabs = (parentElement,reparti) => {
     }
   };
 };
-  
+//crea il bottone di prenota
 const createBookButton = (parentElement) => {
   return {
     render: () => {
@@ -48,7 +50,7 @@ const createBookButton = (parentElement) => {
 };
 
 
-
+//fa la fetch del json e crea il nav
 GetData().then(()=>{
   let specialtyTabs = createSpecialtyTabs(document.getElementById("specialty-tabs"),config.tipologie);
   chiave = config.cacheToken
