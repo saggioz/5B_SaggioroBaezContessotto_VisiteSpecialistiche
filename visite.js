@@ -1,3 +1,5 @@
+let lista = [];
+
 const createForm = () => {
     let data;
     callback = null;
@@ -41,6 +43,9 @@ const createForm = () => {
             let chiave_d = `${result["Reparto"]}/${result["Data"]}/${result["Orario Prenotazione"]}`
             Aggiorna(chiave_d,result["Nominativo"])
             document.getElementById("Message").innerText="Prenotazione eseguita con successo"
+            lista.push(result);
+            console.log("Lista:", lista);
+            
             if (callback) {
                 console.log(result)
                 callback(result);
