@@ -72,5 +72,5 @@ table.build( ["LUNEDÌ", "MARTEDÌ", "MERCOLEDÌ", "GIOVEDÌ", "VENERDÌ"]);
 let lunedi = giorno_iniziale()
 let giorno = giorno_iniziale()
 table.creaheader(lunedi);
-let hours = ["8", "9", "10", "11", "12"];
+let hours = ["8:00", "9:00", "10:00", "11:00", "12:00"];
 table.crea(5, hours);

@@ -40,6 +40,7 @@ const createForm = () => {
             console.log(nom_rep)
             result["Reparto"] = nom_rep
             console.log(result)
+            console.log(result_get)
             let chiave_d = `${result["Reparto"]}/${result["Data"]}/${result["Orario Prenotazione"]}`
             Aggiorna(chiave_d,result["Nominativo"])
             document.getElementById("Message").innerText="Prenotazione eseguita con successo"
