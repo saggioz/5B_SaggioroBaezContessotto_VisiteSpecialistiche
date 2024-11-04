@@ -43,8 +43,14 @@ const createForm = () => {
             let chiave_d = `${result["Reparto"]}-${result["Data"]}-${result["Orario Prenotazione"]}`
             Aggiorna(chiave_d,result["Nominativo"])
             document.getElementById("Message").innerText="Prenotazione eseguita con successo"
-            lista.push(result);
-            console.log("Lista:", lista);
+            const chiaviPrenotazioni = Object.keys(result);
+            chiaviPrenotazioni.forEach((chiave_diz) => {
+                let lista_prenotazione = chiave_diz.split("/");
+                lista_prenotazione.push(result[chiave_diz]);
+                lista.push(lista_prenotazione);
+            });
+            console.log(lista);
+            
             
             if (callback) {
                 console.log(result)
