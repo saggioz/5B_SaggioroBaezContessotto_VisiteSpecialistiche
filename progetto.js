@@ -39,7 +39,7 @@ const createTable = (parentElement) => {
         },
         
         creaheader:(lunedi) => {
-            header = "<table class='table' border='1'><thead>";
+            header = "<table class='table table-bordered'><thead>";
             header += "<th>ORE</th>";
             let tempDate = new Date(lunedi);
             header += data.map(day => {
