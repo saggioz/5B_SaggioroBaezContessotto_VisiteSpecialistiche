@@ -38,7 +38,7 @@ const createForm = () => {
             console.log(nom_rep)
             result["Reparto"] = nom_rep
             console.log(result)
-            let chiave_d = `${result["Reparto"]}-${result["Data"]}-${result["Orario Prenotazione"]}`
+            let chiave_d = `${result["Reparto"]}/${result["Data"]}/${result["Orario Prenotazione"]}`
             Aggiorna(chiave_d,result["Nominativo"])
             document.getElementById("Message").innerText="Prenotazione eseguita con successo"
             if (callback) {
